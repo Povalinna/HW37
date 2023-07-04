@@ -1,0 +1,51 @@
+body{
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    color: black;
+}
+#container{
+    padding: 10px;
+    margin: 50px 50px 100px;
+    width: 600px;
+    min-height: 200px;
+    border: 2px solid darkblue;
+}
+.label{
+    margin: 15px;
+}
+#postNumber{
+    margin: 10px;
+}
+.number{
+
+    border: 2px solid darkslategray;
+}
+#text{
+    width: 300px;
+    min-height: 80px;
+    border: 1px solid darkblue;
+    margin: 10px;
+}
+#comments{
+    position: absolute;
+    top:150px;
+    left: 700px;
+    width: 400px;
+    min-height: 70px;
+    border: 1px solid darkblue;
+    margin: 10px;
+}
+button{
+    width: 150px;
+    height: 30px;
+    border: 2px solid darkblue;
+    font-size: 12px;
+    margin: 10px;
+}
+#btn{
+    position: absolute;
+    left:700px ;
+    top: 250px;
+}
