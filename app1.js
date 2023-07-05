@@ -1,53 +1,43 @@
-
-
-function inputId() {
-   let cont = document.getElementById(`container`);
+function postSearch() {
+   let container = document.getElementById(`container`);
    let button = document.createElement(`button`);
    button.innerHTML = `відправити`;
-   cont.appendChild(button);
-   document.body.append(cont);
-   button.addEventListener(`click`, inputNumber);
-   function inputNumber() {
-      let number = document.querySelector(`#postNumber`).value;
-      let link = `https://jsonplaceholder.typicode.com/todos/` + `${number}`;
-
-      const linkId = fetch(link)
-         .then(function (response) {
-            if (response.status !== 200) {
-               return Promise.reject(response);
-               alert(`error`);
-            }
-            else
-               console.log(response);
-            return response.json()
-         })
-         .then(function (json) {
-            let title = json["title"];
-            let cont = document.getElementById(`container`);
-
-            let blockText = document.createElement(`div`);
-            blockText.setAttribute("id", "text");
-            blockText.innerText = title;
-            let add = document.createElement(`span`);
-            add.innerHTML = `якщо хочете відправити коментар-натисніть на кнопку`;
-
-            cont.appendChild(blockText)
-            document.body.append(cont);
-            cont.appendChild(add);
-            let btn = document.createElement(`button`);
-            btn.innerHTML = `додати коментар`
-            cont.appendChild(btn);
-            document.body.append(cont);
-            btn.addEventListener(`click`, addComment);
-         })
-         .catch(function (error) {
-            alert(error.message)
-         })
-   }
+   container.appendChild(button);
+   document.body.append(container);
+   button.addEventListener(`click`, inputId);
 }
+function inputId() {
+   let id = document.querySelector(`#postNumber`).value;
+   let link = `https://jsonplaceholder.typicode.com/todos/` + `${id}`;
 
+   const linkId = fetch(link)
+      .then(function (response) {
+         return response.json()
+      })
+      .then(function (json) {
+         let title = json["title"];
+         let container = document.getElementById(`container`);
 
-function addComment() {
+         let textPost = document.createElement(`div`);
+         textPost.setAttribute("id", "text");
+         textPost.innerText = title;
+         let addComment = document.createElement(`span`);
+         addComment.innerHTML = `якщо хочете відправити коментар-натисніть на кнопку`;
+
+         container.appendChild(textPost)
+         document.body.append(container);
+         container.appendChild(addComment);
+         let btn = document.createElement(`button`);
+         btn.innerHTML = `додати коментар`
+         container.appendChild(btn);
+         document.body.append(container);
+         btn.addEventListener(`click`, addComments);
+      })
+      .catch(function (error) {
+         alert(error.message)
+      })
+}
+function addComments() {
    let userComment = document.createElement(`textarea`);
    userComment.setAttribute("id", "comments");
    document.body.append(userComment);
@@ -64,4 +54,7 @@ function addComment() {
       closeBtn.style.display = `none`;
    }
 }
-inputId();
+postSearch();
+
+
+ 
